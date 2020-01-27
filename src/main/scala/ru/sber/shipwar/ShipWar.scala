@@ -3,8 +3,7 @@ package ru.sber.shipwar
 import Naval.{Field, Fleet, Game, Ship}
 import scala.io.StdIn._
 
-object
-ShipWar {
+object ShipWar {
 	def main(args: Array[String]) {
 		val valPos : (Field, (Int, Int)) => Vector[Vector[Boolean]] = (field, ship) => field
 			.slice(ship._1 - 2, ship._1 + 1)
