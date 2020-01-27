@@ -4,7 +4,7 @@ import ru.sber.shipwar.Naval.{Field, Fleet, Ship}
 
 import scala.io.StdIn.readInt
 
-class ShipWar extends FlatSpec with Matchers {
+class TestShipWar extends FlatSpec with Matchers {
 	def testValidateShip() = {
 		val ships = List(
 			List(),
@@ -20,7 +20,7 @@ class ShipWar extends FlatSpec with Matchers {
 
 		for (i <- ships.indices) {
 			println(s"Now testing ship: ${ships(i)}")
-			val actual = validateShip(ships(i))
+			val actual = ShipWar.validateShip(ships(i))
 			actual == expected(i) match {
 				case true => println(s"Passed!\texpected: ${expected(i)}\tactual: $actual\n")
 				case false => println(s"FAILED!\texpected: ${expected(i)}\tactual: $actual\n")
@@ -34,7 +34,7 @@ class ShipWar extends FlatSpec with Matchers {
 		val game: (Field, Fleet) = (Lesson.field, Map.empty[String, Ship])
 		val expected = 2
 
-		println(output(game, input(Map.empty[String, Ship],
+		println(ShipWar.output(game, ShipWar.input(Map.empty[String, Ship],
 			readInt).toList)._2.size == expected)
 		//Copy and Paste in ConsoleWrite
 		//4
@@ -53,6 +53,5 @@ class ShipWar extends FlatSpec with Matchers {
 		//5 1
 		//5 0
 	}
-
 	testAddAndTryAddShip()
 }
